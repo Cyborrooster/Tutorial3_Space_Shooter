@@ -5,6 +5,8 @@ public class DestroyByContact : MonoBehaviour
 {
 	public GameObject explosion;
 	public GameObject playerExplosion;
+    public GameObject Player;
+    public GameObject Asteroid;
 	public int scoreValue;
 	private GameController gameController;
     
@@ -19,6 +21,7 @@ public class DestroyByContact : MonoBehaviour
 		{
 			Debug.Log ("Cannot find 'GameController' script");
 		}
+        GameObject Player = GameObject.FindGameObjectWithTag("Player");
 	}
 
 	void OnTriggerEnter (Collider other)
@@ -36,14 +39,18 @@ public class DestroyByContact : MonoBehaviour
 		if (other.tag == "Player")
 		{
 			Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
-			gameController.GameOver();
+			//gameController.GameOver();
+            Destroy(Player);
 		}
-		
+		if (other.tag == "Shot")
+        {
+            Destroy(Asteroid);
+            Destroy(other.gameObject);
+        }
 		gameController.AddScore(scoreValue);
 
 		Destroy (other.gameObject);
 		Destroy (gameObject);
 
 	}
-
 }
