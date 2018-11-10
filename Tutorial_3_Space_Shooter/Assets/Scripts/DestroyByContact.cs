@@ -8,6 +8,7 @@ public class DestroyByContact : MonoBehaviour
     public GameObject Player;
     public GameObject Asteroid;
 	public int scoreValue;
+    private int newScoreValue;
 	private GameController gameController;
     
 	void Start ()
@@ -41,13 +42,15 @@ public class DestroyByContact : MonoBehaviour
 			Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
 			//gameController.GameOver();
             Destroy(Player);
+
 		}
 		if (other.tag == "Shot")
         {
             Destroy(Asteroid);
             Destroy(other.gameObject);
+            gameController.AddScore(scoreValue + newScoreValue);
         }
-		gameController.AddScore(scoreValue);
+		
 
 		Destroy (other.gameObject);
 		Destroy (gameObject);

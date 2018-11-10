@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public GameObject hazard;
     public Vector3 spawnValues;
+    public GameObject Player;
     public int hazardCount;
     public float spawnWait;
     public float startWait;
@@ -63,7 +64,9 @@ public class GameController : MonoBehaviour
 
    public void GameOver()
     {
-        gameOverText.text = "Game Over!";
-        gameOver = true;
+        if (gameOver == true)
+        {
+            gameOverText.text = "Game Over!";
+        }
     }
 }
