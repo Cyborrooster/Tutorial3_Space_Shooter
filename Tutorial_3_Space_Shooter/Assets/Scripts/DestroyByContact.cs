@@ -13,14 +13,14 @@ public class DestroyByContact : MonoBehaviour
     
 	void Start ()
 	{
-		GameObject gameControllerObject = GameObject.FindGameObjectWithTag ("GameController");
+		GameObject gameControllerObject = GameObject.FindGameObjectWithTag("GameController");
 		if (gameControllerObject != null)
 		{
-			gameController = gameControllerObject.GetComponent <GameController>();
+			gameController = gameControllerObject.GetComponent<GameController>();
 		}
 		if (gameController == null)
 		{
-			Debug.Log ("Cannot find 'GameController' script");
+			Debug.Log("Cannot find 'GameController' script");
 		}
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
 	}
@@ -48,11 +48,11 @@ public class DestroyByContact : MonoBehaviour
         {
             Destroy(Asteroid);
             Destroy(other.gameObject);
-            gameController.AddScore(scoreValue + newScoreValue);
+     
         }
-		
 
-		Destroy (other.gameObject);
+        //gameController.AddScore(scoreValue + newScoreValue);
+        Destroy (other.gameObject);
 		Destroy (gameObject);
 
 	}
